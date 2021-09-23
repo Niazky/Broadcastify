@@ -1,0 +1,69 @@
+name: SlimeHidePlayer
+version: '${project.version}'
+main: me.zazkya.slimehideplayer.main
+api-version: 1.16
+softdepend: [ PlaceholderAPI ]
+authors: [ zAzkkya ]
+description: SlimeHidePlayer is plugin that allows players to toggle visibility of other players
+website: https://github.com/zAzkkya/SlimeHidePlayer
+commands:
+  shp:
+    description: Main SlimeHidePlayercommand.
+    aliases: [slimehideplayer, hideplayer, hide,]
+permissions:
+  shp.*:
+    description: Gives access to all SlimeHidePlayerpermissions
+    children:
+      shp.torch.hide: true
+      shp.torch.show: true
+      shp.tool: true
+      shp.reload: true
+      shp.setdisplayname: true
+      shp.setmessage: true
+      shp.bypass: true
+      shp.nonHideable: true
+  -shp.*:
+    description: Deny access to all SlimeHidePlayerpermissions
+    children:
+      shp.torch.hide: false
+      shp.torch.show: false
+      shp.tool: false
+      shp.reload: false
+      shp.setdisplayname: false
+      shp.setmessage: false
+      shp.bypass: false
+      shp.denypick: true
+      shp.denydrop: true
+      shp.denybreak: true
+      shp.denyplace: true
+      shp.nonHideable: false
+  shp.torch.hide:
+    description: You can hide the players with command.
+    default: true
+  shp.torch.show:
+    description: You can show the players with command.
+    default: true
+  shp.tool:
+    description: You get the tool for hidden players.
+    default: op
+  shp.reload:
+    description: You cand reload the plugin config.
+    default: op
+  shp.setdisplayname:
+    description: Set the disaplay name for the toggleoff item.
+    default: op
+  shp.setmessage:
+    description: Set any message of the plugin.
+    default: op
+  shp.torch.use:
+    description: Allow the player to use the torch.
+    default: true
+    children:
+      shp.torch.hide: true
+      shp.torch.show: true
+  shp.bypass:
+    description: Players bypasses the time between clicks.
+    default: op
+  shp.nonHideable:
+    description: Player is hidable and other players can see him.
+    default: op

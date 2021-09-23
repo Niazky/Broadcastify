@@ -1,0 +1,35 @@
+# ┌─────────────────────────────────────┐
+# |            MAIN SETTING             |
+# |                                     |
+# | Here you can set whatever you want  |
+# |                                     |
+# └─────────────────────────────────────┘
+
+# Prefix before broadcast
+# Use a color code after to change message color
+# Here we use &f to make the rest of the message white
+ShowPrefix: true
+Prefix: '&e[&aBroadcast&e] &r'
+
+# Suffix after broadcast
+# %sender% - player that did command
+ShowSuffix: false
+Suffix: '&7(Admin Team) &f-%sender%'
+
+# Permissions
+ReloadPerm: 'sb.Admin'
+
+# ┌──────────────────────────────────────────────┐
+# |                    MESSAGES                  |
+# |                                              |
+# | Customize messages that SlimeBroadcast sends |
+# |                                              |
+# └──────────────────────────────────────────────┘
+
+# Error if you don't include any arguments
+ErrorMessage: '&cYou need to include a message!'
+ReloadMessage: '&aSuccessfully reloaded the config!'
+
+# What should console be called. Default: CONSOLE
+ConsoleName: 'Server Console'
+

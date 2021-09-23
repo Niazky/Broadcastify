@@ -24,16 +24,13 @@ public class main extends JavaPlugin {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String Label, String[] args) {
-        // Broadcast
         if (cmd.getName().equalsIgnoreCase("broadcast")) {
             if (args.length == 0) {
-                // No arguments error
                 String Error = getConfig().getString("ErrorMessage");
                 assert Error != null;
                 Error = ChatColor.translateAlternateColorCodes('&', Error);
                 sender.sendMessage(Error);
             }
-            // Get message
             else {
                 String Prefix = "";
                 String Suffix = "";
@@ -45,7 +42,6 @@ public class main extends JavaPlugin {
                     if (arg.contains("p:")) {
                         Prefix = arg;
                     }
-                    // Checks if our 1st arg is not a prefix
                     else if (!(args[0]).contains("p:")) {
                         if (ShowPrefix) {
                             Prefix = getConfig().getString("Prefix");
@@ -67,7 +63,6 @@ public class main extends JavaPlugin {
                     sb.append(arg).append(" ");
                 }
 
-                // We remove our Prefix/Suffix from this to avoid duplication as "Content" will contain the p: and s: stuff
                 assert Prefix != null;
                 assert Suffix != null;
                 String Content = sb.toString()
@@ -80,22 +75,16 @@ public class main extends JavaPlugin {
 
             }
 
-            // Looks like we want to reload our config
             if (cmd.getName().equalsIgnoreCase("sbreload")) {
-                // Is the user allowed to do this?
                 if (sender.hasPermission(Objects.requireNonNull(getConfig().getString("ReloadPerm"))))
-                    // Phew. Looks like they are. We will try reload the config
                     try {
-                        // It worked! Reload the config
                         reloadConfig();
                         saveDefaultConfig();
-                        // Just let 'em know we have done the job
                         String Reload = getConfig().getString("ReloadMessage");
                         assert Reload != null;
                         Reload = ChatColor.translateAlternateColorCodes('&', Reload);
                         sender.sendMessage(Reload);
                     } catch (Exception e) {
-                        // Uh oh. Something has gone wrong. Lets tell the sender
                         sender.sendMessage(ChatColor.RED + "Failed to reload. Check syntax");
                     }
             }
